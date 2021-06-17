@@ -14,10 +14,16 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '@/assets/css/normalize.css',
+    '@/assets/css/skeleton.css',
+    '@/assets/css/main.scss',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    { src: '~/plugins/chroma.client.js', mode: 'client' },
+    { src: '~/plugins/zlib.js'},
+    { src: '~/plugins/blynk.js'},
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -25,18 +31,33 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    "@nuxtjs/localforage"
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    // https://go.nuxtjs.dev/pwa
+    '@nuxtjs/proxy',
     '@nuxtjs/pwa',
+    'nuxt-sweetalert2',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    proxy: true
+  },
+
+  proxy: {
+    '/api/': {
+      target: 'http://blynk-cloud.com/',
+      pathRewrite: { '^/api/': '' }
+    }
+  },
+
+  localforage: {
+    name: "ebonsai",
+    storeName: "ebonsaiStorage"
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
