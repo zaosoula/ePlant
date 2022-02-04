@@ -12,7 +12,7 @@
     "@nuxtjs/axios": "^5.13.1",
     "@nuxtjs/pwa": "^3.3.5",
     "chart.js": "3.5.1",
-    "chroma-js": "2.1.2",
+    "chroma-js": "2.4.2",
     "core-js": "^3.17.3",
     "nuxt": "^2.15.3",
     "nuxt-sweetalert2": "1.0.0",
